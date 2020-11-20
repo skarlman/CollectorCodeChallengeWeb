@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Collector code challenge</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Perfekta värdeord
+
+      </h1>
+      <p class="subtitle">
+        
+      </p>
+<p>Collectors värdeord <strong>etik</strong>, <strong>engagemang</strong> och <strong>entrepenörskap</strong> är noga utvalda på många sätt. Ett kanske mindre känt faktum är att de bildar en <em>likbent</em> triangel med avseende på <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" rel="nofollow">Levenshteinavståndet</a>.</p>
+<p><img src="https://github.com/collector-bank/collector-dev-quiz/raw/master/perfekta%20v%C3%A4rdeord/illustration.svg" style="max-width:100%;"></a></p>
+<p>Levenshteinavståendet mellan två strängar är (det minimala) antalet enkelteckensredigeringar (borttagningar, insättningar och ersättningar) som krävs för transformera det ena ordet till det andra. Prova gärna denna <a href="https://planetcalc.com/1721/" rel="nofollow">online kalkylator</a> för att verifiera avstånden i triangeln ovan.</p>
+<br/>
+<p>Vilka nya värdeord får Collector om vi kräver en <em>liksidig</em> triangel? För att hålla det så likt de nuvarande orden som möjligt tillåts det endast att ett av värdeorden byts ut och att avståndet mellan det utbytta värdeordet och dess ersättare ska vara så litet som möjligt.</p>
+<br/>
+<p>Använd ord från denna <a href="https://github.com/titoBouzout/Dictionaries/raw/master/Swedish.dic">ordlista</a>. Endast grundord är tillåtna så böjningsformer kan ignoreras. Ordlistan innehåller ett ord per rad enligt formatet <code>[grundord]/[böjningsregler]</code> alternativt bara <code>[grundord]</code> om böjningsregler saknas.</p>
+<br>
+<p>En ledtråd är att det är ett ord i tiden</p>
+
+<br>    
+</div>
+
+<div class="container">
+  <p class="subtitle">Testa om du lyckats:</p>
+    <input id="word1" type="text"/>
+  <input id="word2" type="text"/>
+  <input id="word3" type="text"/>
+    <input type="button" value="Skicka" onclick="sendAnswer();"/>
+</div>
+
+<div class="container">
+    <br>
+    
+    <div id="resultText">
+       
+    </div>
+</div>
+
+</section>
+  
+
+</body>
+
+<script type="text/javascript">
+ 
+ function sendAnswer(){
+
+ 
+    let data={
+        
+        word1: document.getElementById('word1').value,
+        word2: document.getElementById('word2').value,
+        word3: document.getElementById('word3').value
+    }
+ 
+ 
+    axios.post('https://collectorcodechallengejudge.azurewebsites.net/api/Judge', data)
+      .then((response) => {
+
+        document.getElementById("resultText").innerHTML = response.data;
+      }, (error) => {
+        console.log(error);
+      });
+    }
+     
+     </script>
+
+</html>
