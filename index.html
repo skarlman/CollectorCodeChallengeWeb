@@ -73,18 +73,34 @@
 </div>
 
 <div class="container" style="background-color: #9d4deb; padding: 40px; color: white;">
+  <div class="columns">
+  <div class="column">
   <p class="subtitle" style="color:white;">Testa om du lyckats:</p>
     <input id="word1" type="text"/>
   <input id="word2" type="text"/>
   <input id="word3" type="text"/>
     <input id="validatebutton" type="button" value="Skicka" onclick="sendAnswer();"/>
+
 <br>
     <div id="resultText">
        
     </div>
-
   </div>
 
+
+    <div class="column is-one-third">
+      <article class="message is-dark">
+        <div class="message-header">
+          <p>Hur många har lyckats?</p>
+        </div>
+        <div class="message-body">
+          <div id="counters"></div>
+        </div>
+      </article>
+    </div>
+    
+  </div>
+</div>
     
 </section>
 
@@ -113,11 +129,20 @@
         word3: document.getElementById('word3').value
     }
  
+    if (data.word1 == '' || data.word2 == '' || data.word3 == ''){
+      return;
+    }
  
     axios.post('https://collectorcodechallengejudge.azurewebsites.net/api/Judge', data)
       .then((response) => {
 
         document.getElementById("resultText").innerHTML = response.data;
+        updateCounts();
+        document.getElementById('word1').value = '';
+        document.getElementById('word2').value = '';
+        document.getElementById('word3').value = '';
+
+
       }, (error) => {
         console.log(error);
       });
@@ -134,6 +159,20 @@ input.addEventListener("keyup", function(event) {
 
   }
 });
+
+setInterval(updateCounts, 60000);
+
+function updateCounts(){
+  axios.get('https://collectorcodechallengejudge.azurewebsites.net/api/GetCounts')
+  .then((response) => {
+    document.getElementById("counters").innerHTML = response.data;
+  }, (error) => {
+        console.log(error);
+      })
+    };
+
+
+updateCounts();
      </script>
 
 </html>
