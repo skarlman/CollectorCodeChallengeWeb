@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Jupp, såhär blir det när våra backendare skriver frontendkod... Vi vill bli fler frontendare, sök här: https://karriar.collector.se/ -->
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,10 +8,50 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+    <style>
+      body{
+        font-family: proxima nova,sans-serif;
+    -webkit-font-smoothing: antialiased;
+
+      }
+      a {
+        color: #7eff00;
+      }
+      .bluelink{
+        color: rgb(74, 74, 255);
+      }
+    </style>
 </head>
-  <body>
-  <section class="section">
-    <div class="container">
+  <body style="background-color: #f0f0f0;">
+  <section class="section" style="background-color: white;">
+<div class="container">
+    <img src="https://www.collector.se/img/logos/collector-bank.svg"/>
+  </div>
+  </section>
+  <section> 
+  <div class="container" style="background-color: #9d4deb; padding: 40px; color: white;">
+    <div class="columns">
+      <div class="column is-half">
+        <h1 clasS="title" style="color: white;">Hur snabbt klarar du vår kodutmaning?</h1>
+        <p>Här nedan hittar du en utmaning vi hade internt. Klarar du att lösa den?</p><br>
+        <p>Du kan använda vilket språk, verktyg och ramverk som du vill. När du tror att du knäckt utmaningen så kommer du ha fått fram tre stycken ord. Peta in dem i rutorna längst ner för att se om du lyckats!</p>  
+      </div>
+      <div class="column"></div>
+      <div class="column is-one-third">
+        <article class="message is-dark">
+          <div class="message-header">
+            <p>Äsch. Till målet utan att passera gå?</p>
+          </div>
+          <div class="message-body">
+            Ta en kik på vår karriärssida för att få en uppfattning om vad vi jobbar med.<br>
+            <a href="https://karriar.collector.se">karriar.collector.se</a>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </div>
+  <div class="container" style="background-color: white;padding: 40px;">
       <h1 class="title">
         Perfekta värdeord
 
@@ -18,37 +59,45 @@
       <p class="subtitle">
         
       </p>
-<p>Collectors värdeord <strong>etik</strong>, <strong>engagemang</strong> och <strong>entreprenörskap</strong> är noga utvalda på många sätt. Ett kanske mindre känt faktum är att de bildar en <em>likbent</em> triangel med avseende på <a href="https://en.wikipedia.org/wiki/Levenshtein_distance" rel="nofollow">Levenshteinavståndet</a>.</p>
+<p>Collectors värdeord <strong>etik</strong>, <strong>engagemang</strong> och <strong>entreprenörskap</strong> är noga utvalda på många sätt. Ett kanske mindre känt faktum är att de bildar en <em>likbent</em> triangel med avseende på <a class="bluelink" href="https://en.wikipedia.org/wiki/Levenshtein_distance" rel="nofollow">Levenshteinavståndet</a>.</p>
 <p><img src="https://github.com/collector-bank/collector-dev-quiz/raw/master/perfekta%20v%C3%A4rdeord/illustration.svg" style="max-width:100%;"></a></p>
-<p>Levenshteinavståendet mellan två strängar är (det minimala) antalet enkelteckensredigeringar (borttagningar, insättningar och ersättningar) som krävs för transformera det ena ordet till det andra. Prova gärna denna <a href="https://planetcalc.com/1721/" rel="nofollow">online kalkylator</a> för att verifiera avstånden i triangeln ovan.</p>
+<p>Levenshteinavståendet mellan två strängar är (det minimala) antalet enkelteckensredigeringar (borttagningar, insättningar och ersättningar) som krävs för transformera det ena ordet till det andra. Prova gärna denna <a href="https://planetcalc.com/1721/" rel="nofollow" class="bluelink">online kalkylator</a> för att verifiera avstånden i triangeln ovan.</p>
 <br/>
 <p>Vilka nya värdeord får Collector om vi kräver en <em>liksidig</em> triangel? För att hålla det så likt de nuvarande orden som möjligt tillåts det endast att ett av värdeorden byts ut och att avståndet mellan det utbytta värdeordet och dess ersättare ska vara så litet som möjligt.</p>
 <br/>
-<p>Använd ord från denna <a href="https://github.com/titoBouzout/Dictionaries/raw/master/Swedish.dic">ordlista</a>. Endast grundord är tillåtna så böjningsformer kan ignoreras. Ordlistan innehåller ett ord per rad enligt formatet <code>[grundord]/[böjningsregler]</code> alternativt bara <code>[grundord]</code> om böjningsregler saknas.</p>
+<p>Använd ord från denna <a href="https://github.com/titoBouzout/Dictionaries/raw/master/Swedish.dic" class="bluelink">ordlista</a>. Endast grundord är tillåtna så böjningsformer kan ignoreras. Ordlistan innehåller ett ord per rad enligt formatet <code>[grundord]/[böjningsregler]</code> alternativt bara <code>[grundord]</code> om böjningsregler saknas.</p>
 <br>
 <p>En ledtråd är att det är ett ord i tiden</p>
 
 <br>    
 </div>
 
-<div class="container">
-  <p class="subtitle">Testa om du lyckats:</p>
+<div class="container" style="background-color: #9d4deb; padding: 40px; color: white;">
+  <p class="subtitle" style="color:white;">Testa om du lyckats:</p>
     <input id="word1" type="text"/>
   <input id="word2" type="text"/>
   <input id="word3" type="text"/>
-    <input type="button" value="Skicka" onclick="sendAnswer();"/>
-</div>
-
-<div class="container">
-    <br>
-    
+    <input id="validatebutton" type="button" value="Skicka" onclick="sendAnswer();"/>
+<br>
     <div id="resultText">
        
     </div>
-</div>
 
+  </div>
+
+    
 </section>
+
+<section style="background-color: white; ">
+<div class="columns">
+  <div class="column">
+    <br>
+    <br>  
   
+  </div>
+</div>  
+  
+</section>
 
 </body>
 
@@ -73,7 +122,18 @@
         console.log(error);
       });
     }
-     
+
+
+    var input = document.getElementById("word3");
+
+input.addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+
+    document.getElementById("validatebutton").click();
+
+  }
+});
      </script>
 
 </html>
